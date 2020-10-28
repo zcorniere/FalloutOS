@@ -5,6 +5,9 @@ lazy_static::lazy_static! {
     pub static ref WRITER: Mutex<Writer> = Mutex::new(Writer::default());
 }
 
+mod macros;
+pub use self::macros::_print;
+
 use volatile::Volatile;
 
 #[allow(dead_code)]
@@ -131,3 +134,4 @@ impl Default for Writer {
         }
     }
 }
+
