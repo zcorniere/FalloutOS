@@ -1,5 +1,5 @@
 [package]
-name = "fallout_os"
+name = "fallout_vga_buffer"
 version = "0.0.1"
 authors = ["Zacharie Corniere <cornierez@gmail.com>"]
 edition = "2018"
@@ -13,7 +13,4 @@ panic = "abort"
 panic = "abort"
 
 [dependencies]
-bootloader = "0.9.8"
-
-[dependencies.fallout_vga_buffer]
-path = "./lib/vga_buffer/"
+volatile = "0.2.6"
