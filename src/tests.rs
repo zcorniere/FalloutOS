@@ -1,29 +1,4 @@
-pub trait Testable {
-    fn run(&self) -> ();
-}
-
-impl<T> Testable for T
-where
-    T: Fn(),
-{
-    fn run(&self) {
-        serial_print!("{}...\t", core::any::type_name::<T>());
-        self();
-        serial_println!("[OK]");
-    }
-}
-
-use fallout_qemu::{exit_qemu, QemuExitCode};
-use fallout_qemu::{serial_print, serial_println};
 use fallout_vga_buffer::println;
-
-pub fn test_runner(tests: &[&dyn Testable]) {
-    serial_println!("Running {} tests", tests.len());
-    for test in tests {
-        test.run();
-    }
-    exit_qemu(QemuExitCode::Success);
-}
 
 #[test_case]
 fn trivial_assertion() {
@@ -46,12 +21,4 @@ fn test_println_output() {
         let screen_char = WRITER.lock().buffer.chars[BUFFER_HEIGHT - 2][i].read();
         assert_eq!(char::from(screen_char.ascii_char), c);
     }
-}
-
-#[panic_handler]
-fn panic(info: &core::panic::PanicInfo) -> ! {
-    serial_println!("[KO]\n");
-    serial_println!("Error: {}\n", info);
-    exit_qemu(QemuExitCode::Failure);
-    loop {}
 }

@@ -29,3 +29,10 @@ path = "./lib/vga_buffer/"
 
 [dependencies.fallout_qemu]
 path = "./lib/qemu/"
+
+[dependencies.fallout_testing_framework]
+path = "./lib/test_framework/"
+
+[[test]]
+name = "should_panic"
+harness = false
