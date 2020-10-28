@@ -5,8 +5,7 @@ lazy_static::lazy_static! {
     pub static ref WRITER: Mutex<Writer> = Mutex::new(Writer::default());
 }
 
-mod macros;
-pub use self::macros::_print;
+pub mod macros;
 
 use volatile::Volatile;
 
@@ -34,7 +33,7 @@ pub enum Color {
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(transparent)]
-struct ColorCode(u8);
+pub struct ColorCode(u8);
 
 impl ColorCode {
     fn new(fg: Color, bg: Color) -> Self {
@@ -50,25 +49,25 @@ impl Default for ColorCode {
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(C)]
-struct ScreenChar {
-    ascii_char: u8,
-    color_code: ColorCode,
+pub struct ScreenChar {
+    pub ascii_char: u8,
+    pub color_code: ColorCode,
 }
 
-const BUFFER_HEIGHT: usize = 25;
-const BUFFER_WIDTH: usize = 80;
+pub const BUFFER_HEIGHT: usize = 25;
+pub const BUFFER_WIDTH: usize = 80;
 
 #[repr(transparent)]
-struct Buffer {
-    chars: [[Volatile<ScreenChar>; BUFFER_WIDTH]; BUFFER_HEIGHT],
+pub struct Buffer {
+    pub chars: [[Volatile<ScreenChar>; BUFFER_WIDTH]; BUFFER_HEIGHT],
 }
 
 pub const VGA_BUFFER: *mut u8 = 0xb8000 as *mut u8;
 
 pub struct Writer {
-    col_pos: usize,
-    color_code: ColorCode,
-    buffer: &'static mut Buffer,
+    pub col_pos: usize,
+    pub color_code: ColorCode,
+    pub buffer: &'static mut Buffer,
 }
 
 impl Writer {
