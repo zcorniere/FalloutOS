@@ -1,4 +1,10 @@
 #![no_std]
+use spin::Mutex;
+
+lazy_static::lazy_static! {
+    pub static ref WRITER: Mutex<Writer> = Mutex::new(Writer::default());
+}
+
 use volatile::Volatile;
 
 #[allow(dead_code)]

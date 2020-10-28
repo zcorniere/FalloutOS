@@ -1,7 +1,7 @@
 #![no_std]
 #![no_main]
 
-use fallout_vga_buffer::Writer;
+use fallout_vga_buffer::WRITER;
 
 use core::fmt::Write;
 use core::panic::PanicInfo;
@@ -15,8 +15,7 @@ static HELLO: &str = "Hello World!";
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
-    let mut  writer = Writer::default();
-    writeln!(writer, "{}", HELLO).unwrap();
+    writeln!(WRITER.lock(), "{}", HELLO).unwrap();
     loop {}
 }
 
