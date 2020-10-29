@@ -36,6 +36,7 @@ dependencies = [
  "lazy_static",
  "spin",
  "volatile",
+ "x86_64",
 ]
 
 [[package]]

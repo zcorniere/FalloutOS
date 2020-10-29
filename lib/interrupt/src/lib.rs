@@ -33,3 +33,9 @@ pub fn init() -> bool {
     write_with_status("Loading the Hardware interrupt", hardware::init_pics);
     true
 }
+
+pub fn hlt_loop() -> ! {
+    loop {
+        x86_64::instructions::hlt();
+    }
+}

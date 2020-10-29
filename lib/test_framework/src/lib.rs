@@ -56,9 +56,9 @@ fn test_println_output() {
 #[cfg(test)]
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
-    fallout_interrupt::init_idt();
+    fallout_interrupt::init();
     test_main();
-    loop {}
+    fallout_interrupt::hlt_loop();
 }
 
 pub fn test_panic_handler(info: &core::panic::PanicInfo) -> ! {

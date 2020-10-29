@@ -22,5 +22,5 @@ pub extern "C" fn _start() -> ! {
     #[cfg(test)]
     test_main();
 
-    loop {}
+    fallout_interrupt::hlt_loop();
 }
