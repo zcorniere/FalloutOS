@@ -22,7 +22,13 @@ test-timeout = 300
 #panic = "abort"
 
 [dependencies]
+x86_64 = "0.12"
+volatile = "0.2.6"
 bootloader = "0.9.8"
+
+[dependencies.lazy_static]
+version = "1"
+features = ["spin_no_std"]
 
 [dependencies.fallout_vga_buffer]
 path = "./lib/vga_buffer/"
@@ -30,9 +36,15 @@ path = "./lib/vga_buffer/"
 [dependencies.fallout_qemu]
 path = "./lib/qemu/"
 
+[dependencies.fallout_interrupt]
+path = "./lib/interrupt/"
+
 [dependencies.fallout_testing_framework]
 path = "./lib/test_framework/"
 
 [[test]]
 name = "should_panic"
+harness = false
+[[test]]
+name = "stack_overflow"
 harness = false

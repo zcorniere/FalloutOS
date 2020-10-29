@@ -13,6 +13,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cf1de2fe8c75bc145a2f577add951f8134889b4795d47466a54a5c846d691693"
 
 [[package]]
+name = "fallout_interrupt"
+version = "0.0.1"
+dependencies = [
+ "fallout_vga_buffer",
+ "lazy_static",
+ "x86_64",
+]
+
+[[package]]
 name = "fallout_qemu"
 version = "0.0.1"
 dependencies = [
@@ -26,6 +35,7 @@ dependencies = [
 name = "fallout_testing_framework"
 version = "0.0.1"
 dependencies = [
+ "fallout_interrupt",
  "fallout_qemu",
  "fallout_vga_buffer",
 ]

@@ -4,7 +4,7 @@
 #![no_std]
 #![no_main]
 
-use fallout_vga_buffer::println;
+use fallout_vga_buffer::{println};
 
 mod panic;
 
@@ -16,10 +16,12 @@ static HELLO: &str = "Hello World!";
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
     println!("{}", HELLO);
+    fallout_interrupt::init();
 
     #[cfg(test)]
     test_main();
 
+    println!("It did not crash");
     loop {}
 }
 

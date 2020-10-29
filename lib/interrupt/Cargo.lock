@@ -13,51 +13,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cf1de2fe8c75bc145a2f577add951f8134889b4795d47466a54a5c846d691693"
 
 [[package]]
-name = "bootloader"
-version = "0.9.11"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "83732ad599045a978528e4311539fdcb20c30e406b66d1d08cd4089d4fc8d90f"
-
-[[package]]
 name = "fallout_interrupt"
 version = "0.0.1"
 dependencies = [
  "fallout_vga_buffer",
  "lazy_static",
  "x86_64",
-]
-
-[[package]]
-name = "fallout_os"
-version = "0.0.1"
-dependencies = [
- "bootloader",
- "fallout_interrupt",
- "fallout_qemu",
- "fallout_testing_framework",
- "fallout_vga_buffer",
- "lazy_static",
- "volatile",
- "x86_64",
-]
-
-[[package]]
-name = "fallout_qemu"
-version = "0.0.1"
-dependencies = [
- "lazy_static",
- "spin",
- "uart_16550",
- "x86_64",
-]
-
-[[package]]
-name = "fallout_testing_framework"
-version = "0.0.1"
-dependencies = [
- "fallout_interrupt",
- "fallout_qemu",
- "fallout_vga_buffer",
 ]
 
 [[package]]
@@ -83,16 +44,6 @@ name = "spin"
 version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6e63cff320ae2c57904679ba7cb63280a3dc4613885beafb148ee7bf9aa9042d"
-
-[[package]]
-name = "uart_16550"
-version = "0.2.10"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "afb00b16a4c8acbfc4eb8cfeda1f9c0507c7e87c6563edce64a236af93acf70c"
-dependencies = [
- "bitflags",
- "x86_64",
-]
 
 [[package]]
 name = "volatile"

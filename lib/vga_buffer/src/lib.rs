@@ -134,3 +134,10 @@ impl Default for Writer {
     }
 }
 
+pub fn write_with_status<T: Fn() -> bool>(msg: &str, func: T) {
+    print!("{}...", msg);
+    match func() {
+        true => println!("[OK]"),
+        false => println!("[KO]"),
+    }
+}

@@ -11,6 +11,7 @@ fn test_println_many() {
         println!("test_println_many output line");
     }
 }
+
 #[test_case]
 fn test_println_output() {
     use fallout_vga_buffer::{WRITER, BUFFER_HEIGHT};
@@ -21,4 +22,9 @@ fn test_println_output() {
         let screen_char = WRITER.lock().buffer.chars[BUFFER_HEIGHT - 2][i].read();
         assert_eq!(char::from(screen_char.ascii_char), c);
     }
+}
+
+#[test_case]
+fn test_breakpoint_exception() {
+    x86_64::instructions::interrupts::int3();
 }
