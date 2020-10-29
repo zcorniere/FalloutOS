@@ -14,6 +14,8 @@ lazy_static::lazy_static! {
         idt.breakpoint.set_handler_fn(handlers::breakpoint_handler);
         idt[hardware::InterruptIndex::Timer.as_usize()]
             .set_handler_fn(handlers::timer_interrupt_handler);
+        idt[hardware::InterruptIndex::Keyboard.as_usize()]
+            .set_handler_fn(handlers::keyboard_interrupt_handler);
         unsafe {
             idt.double_fault.set_handler_fn(handlers::double_fault_handler)
                 .set_stack_index(gdt::DOUBLE_FAULT_IST_INDEX);

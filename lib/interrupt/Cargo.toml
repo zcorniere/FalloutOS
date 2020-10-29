@@ -16,6 +16,7 @@ panic = "abort"
 spin = "0.5"
 x86_64 = "0.12"
 pic8259_simple = "0.2.0"
+pc-keyboard = "0.5.0"
 
 [dependencies.lazy_static]
 version = "1"
