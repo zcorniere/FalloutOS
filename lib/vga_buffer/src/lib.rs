@@ -85,7 +85,7 @@ impl Writer {
                     color_code: self.color_code,
                 });
                 self.col_pos += 1;
-            },
+            }
         }
     }
     pub fn write_string(&mut self, s: &str) {

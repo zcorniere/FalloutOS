@@ -1,5 +1,5 @@
-use uart_16550::SerialPort;
 use spin::Mutex;
+use uart_16550::SerialPort;
 
 lazy_static::lazy_static! {
     pub static ref SERIAL1: Mutex<SerialPort> = {
@@ -23,5 +23,7 @@ macro_rules! serial_println {
 #[doc(hidden)]
 pub fn _serial_print(args: core::fmt::Arguments) {
     use core::fmt::Write;
-    SERIAL1.lock().write_fmt(args).unwrap();
+    x86_64::instructions::interrupts::without_interrupts(|| {
+        SERIAL1.lock().write_fmt(args).unwrap();
+    });
 }

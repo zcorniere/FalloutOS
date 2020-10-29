@@ -43,7 +43,7 @@ fn test_println_many() {
 }
 #[test_case]
 fn test_println_output() {
-    use fallout_vga_buffer::{WRITER, BUFFER_HEIGHT};
+    use fallout_vga_buffer::{BUFFER_HEIGHT, WRITER};
 
     let s = "Some test string that fits on a single line";
     println!("{}", s);

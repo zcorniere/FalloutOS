@@ -15,4 +15,3 @@ fn panic(info: &PanicInfo) -> ! {
 fn panic(info: &PanicInfo) -> ! {
     fallout_testing_framework::test_panic_handler(info);
 }
-

@@ -6,9 +6,9 @@
 #![reexport_test_harness_main = "test_main"]
 
 use core::panic::PanicInfo;
+use fallout_qemu::{exit_qemu, serial_print, serial_println, QemuExitCode};
 use x86_64::structures::idt::InterruptDescriptorTable;
 use x86_64::structures::idt::InterruptStackFrame;
-use fallout_qemu::{QemuExitCode, exit_qemu, serial_println, serial_print};
 
 lazy_static::lazy_static! {
     static ref TEST_IDT: InterruptDescriptorTable = {
@@ -52,4 +52,3 @@ fn panic(_info: &PanicInfo) -> ! {
     exit_qemu(QemuExitCode::Success);
     loop {}
 }
-
