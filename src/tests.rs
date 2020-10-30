@@ -1,4 +1,4 @@
-use fallout_vga_buffer::println;
+use vga_buffer::println;
 
 #[test_case]
 fn trivial_assertion() {
@@ -15,7 +15,7 @@ fn test_println_many() {
 #[test_case]
 fn test_println_output() {
     use core::fmt::Write;
-    use fallout_vga_buffer::{BUFFER_HEIGHT, WRITER};
+    use vga_buffer::{BUFFER_HEIGHT, WRITER};
 
     let s = "Some test string that fits on a single line";
     x86_64::instructions::interrupts::without_interrupts(|| {

@@ -15,7 +15,7 @@ lazy_static::lazy_static! {
         let mut idt = InterruptDescriptorTable::new();
         unsafe {
             idt.double_fault.set_handler_fn(test_double_fault_handler)
-                .set_stack_index(fallout_interrupt::gdt::DOUBLE_FAULT_IST_INDEX);
+                .set_stack_index(interrupt::gdt::DOUBLE_FAULT_IST_INDEX);
         }
         idt
     };
@@ -34,7 +34,7 @@ extern "x86-interrupt" fn test_double_fault_handler(
 pub extern "C" fn _start() -> ! {
     serial_print!("stack_overflow::stack_overflow...\t");
     TEST_IDT.load();
-    fallout_interrupt::gdt::init_gdt();
+    interrupt::gdt::init_gdt();
 
     stack_overflow();
     panic!("Execution continued after stack_overflow");

@@ -25,18 +25,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d531514efb06912141fa65967447de805691b685a7565c87d1765afe34a98aa7"
 
 [[package]]
-name = "fallout_interrupt"
-version = "0.0.1"
-dependencies = [
- "fallout_vga_buffer",
- "lazy_static",
- "pc-keyboard",
- "pic8259_simple",
- "spin",
- "x86_64",
-]
-
-[[package]]
 name = "fallout_qemu"
 version = "0.0.1"
 dependencies = [
@@ -51,18 +39,20 @@ name = "fallout_testing_framework"
 version = "0.0.1"
 dependencies = [
  "bootloader",
- "fallout_interrupt",
  "fallout_qemu",
- "fallout_vga_buffer",
+ "interrupt",
+ "vga_buffer",
 ]
 
 [[package]]
-name = "fallout_vga_buffer"
+name = "interrupt"
 version = "0.0.1"
 dependencies = [
  "lazy_static",
+ "pc-keyboard",
+ "pic8259_simple",
  "spin",
- "volatile",
+ "vga_buffer",
  "x86_64",
 ]
 
@@ -103,6 +93,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "afb00b16a4c8acbfc4eb8cfeda1f9c0507c7e87c6563edce64a236af93acf70c"
 dependencies = [
  "bitflags",
+ "x86_64",
+]
+
+[[package]]
+name = "vga_buffer"
+version = "0.0.1"
+dependencies = [
+ "lazy_static",
+ "spin",
+ "volatile",
  "x86_64",
 ]
 

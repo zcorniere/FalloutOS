@@ -5,7 +5,7 @@
 #![reexport_test_harness_main = "test_main"]
 
 use core::panic::PanicInfo;
-use fallout_vga_buffer::println;
+use vga_buffer::println;
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {

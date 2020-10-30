@@ -85,6 +85,7 @@ name = "memory"
 version = "0.0.1"
 dependencies = [
  "bootloader",
+ "spin",
  "vga_buffer",
  "x86_64",
 ]

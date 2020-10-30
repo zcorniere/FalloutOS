@@ -1,13 +1,20 @@
 #![no_std]
+#![feature(alloc_error_handler)]
+#![feature(const_mut_refs)]
+
+extern crate alloc;
+
+pub mod allocator;
+mod locked;
 
 mod frame_allocator;
 pub use self::frame_allocator::BootInfoFrameAllocator;
 
-use x86_64::{
-    structures::paging::{PageTable, OffsetPageTable},
-    VirtAddr
-};
 use x86_64::registers::control::Cr3;
+use x86_64::{
+    structures::paging::{OffsetPageTable, PageTable},
+    VirtAddr,
+};
 
 /// Initialize a new OffsetPageTable.
 ///
@@ -34,4 +41,3 @@ unsafe fn active_lvl4_table(physical_mem_off: VirtAddr) -> &'static mut PageTabl
 
     &mut *page_table_ptr
 }
-

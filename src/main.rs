@@ -4,8 +4,8 @@
 #![no_std]
 #![no_main]
 
-use vga_buffer::println;
 use bootloader::BootInfo;
+use vga_buffer::println;
 use x86_64::VirtAddr;
 
 mod panic;
@@ -19,7 +19,12 @@ bootloader::entry_point!(kernel_main);
 fn kernel_main(boot_info: &'static BootInfo) -> ! {
     println!("{}", HELLO);
     interrupt::init();
-    let mut frame_allocator = unsafe { memory::BootInfoFrameAllocator::init(&boot_info.memory_map) };
+    let physical_mem_off = VirtAddr::new(boot_info.physical_memory_offset);
+    let mut mapper = unsafe { memory::init(physical_mem_off) };
+    let mut frame_allocator =
+        unsafe { memory::BootInfoFrameAllocator::init(&boot_info.memory_map) };
+    memory::allocator::init_heap(&mut mapper, &mut frame_allocator)
+        .expect("heap initialization failed");
     println!("End of initialization !");
 
     #[cfg(test)]
