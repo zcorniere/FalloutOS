@@ -54,8 +54,12 @@ fn test_println_output() {
 }
 
 #[cfg(test)]
-#[no_mangle]
-pub extern "C" fn _start() -> ! {
+use bootloader::BootInfo;
+
+#[cfg(test)]
+bootloader::entry_point!(kernel_test_main);
+#[cfg(test)]
+fn kernel_test_main(_boot_info: &'static BootInfo) -> ! {
     fallout_interrupt::init();
     test_main();
     fallout_interrupt::hlt_loop();

@@ -1,5 +1,5 @@
 [package]
-name = "fallout_testing_framework"
+name = "fallout_memory"
 version = "0.0.1"
 authors = ["Zacharie Corniere <cornierez@gmail.com>"]
 edition = "2018"
@@ -13,6 +13,7 @@ panic = "abort"
 panic = "abort"
 
 [dependencies]
+x86_64 = "0.12"
 
 [dependencies.bootloader]
 version = "0.9.8"
@@ -20,9 +21,3 @@ features = ["map_physical_memory"]
 
 [dependencies.fallout_vga_buffer]
 path = "../vga_buffer/"
-
-[dependencies.fallout_interrupt]
-path = "../interrupt/"
-
-[dependencies.fallout_qemu]
-path = "../qemu/"

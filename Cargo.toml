@@ -24,7 +24,10 @@ test-timeout = 60
 [dependencies]
 x86_64 = "0.12"
 volatile = "0.2.6"
-bootloader = "0.9.8"
+
+[dependencies.bootloader]
+version = "0.9.8"
+features = ["map_physical_memory"]
 
 [dependencies.lazy_static]
 version = "1"
@@ -32,6 +35,9 @@ features = ["spin_no_std"]
 
 [dependencies.fallout_vga_buffer]
 path = "./lib/vga_buffer/"
+
+[dependencies.fallout_memory]
+path = "./lib/memory/"
 
 [dependencies.fallout_qemu]
 path = "./lib/qemu/"
