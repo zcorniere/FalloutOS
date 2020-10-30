@@ -1,5 +1,5 @@
 [package]
-name = "fallout_interrupt"
+name = "vga_buffer"
 version = "0.0.1"
 authors = ["Zacharie Corniere <cornierez@gmail.com>"]
 edition = "2018"
@@ -13,14 +13,11 @@ panic = "abort"
 panic = "abort"
 
 [dependencies]
-spin = "0.5"
 x86_64 = "0.12"
-pic8259_simple = "0.2.0"
-pc-keyboard = "0.5.0"
+volatile = "0.2.6"
+spin = "0.5"
 
 [dependencies.lazy_static]
 version = "1"
 features = ["spin_no_std"]
 
-[dependencies.fallout_vga_buffer]
-path = "../vga_buffer/"

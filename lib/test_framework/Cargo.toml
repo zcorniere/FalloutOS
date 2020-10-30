@@ -18,11 +18,11 @@ panic = "abort"
 version = "0.9.8"
 features = ["map_physical_memory"]
 
-[dependencies.fallout_vga_buffer]
-path = "../vga_buffer/"
+[dependencies.vga_buffer]
+path = "../../fallout_vga_buffer/"
 
-[dependencies.fallout_interrupt]
-path = "../interrupt/"
+[dependencies.interrupt]
+path = "../../fallout_interrupt/"
 
 [dependencies.fallout_qemu]
 path = "../qemu/"

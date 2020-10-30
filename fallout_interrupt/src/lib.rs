@@ -1,7 +1,7 @@
 #![feature(abi_x86_interrupt)]
 #![no_std]
 
-use fallout_vga_buffer::write_with_status;
+use vga_buffer::write_with_status;
 use x86_64::structures::idt::InterruptDescriptorTable;
 
 pub mod gdt;

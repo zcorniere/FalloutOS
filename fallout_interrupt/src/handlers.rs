@@ -1,4 +1,4 @@
-use fallout_vga_buffer::{print, println};
+use vga_buffer::{print, println};
 use x86_64::structures::idt::InterruptStackFrame;
 use x86_64::structures::idt::PageFaultErrorCode;
 

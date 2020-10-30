@@ -1,5 +1,5 @@
 #[cfg(not(test))]
-use fallout_vga_buffer::println;
+use vga_buffer::println;
 
 use core::panic::PanicInfo;
 
@@ -7,7 +7,7 @@ use core::panic::PanicInfo;
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
     println!("{}", info);
-    fallout_interrupt::hlt_loop();
+    interrupt::hlt_loop();
 }
 
 #[cfg(test)]
