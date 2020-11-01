@@ -16,7 +16,6 @@ panic = "abort"
 spin = "0.5"
 x86_64 = "0.12"
 pic8259_simple = "0.2.0"
-pc-keyboard = "0.5.0"
 
 [dependencies.lazy_static]
 version = "1"
@@ -24,3 +23,6 @@ features = ["spin_no_std"]
 
 [dependencies.vga_buffer]
 path = "../fallout_vga_buffer/"
+
+[dependencies.executor]
+path = "../fallout_executor/"

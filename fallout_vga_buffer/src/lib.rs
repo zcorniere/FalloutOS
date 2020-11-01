@@ -142,17 +142,17 @@ impl Default for Writer {
 }
 
 pub fn unwrap_with_msg<R, E: core::fmt::Debug>(msg: &str, val: Result<R, E>) -> R {
-   print!("{}...", msg);
-   match val {
+    print!("{}...", msg);
+    match val {
         Ok(o) => {
             println!("[OK]");
             o
-        },
+        }
         Err(e) => {
             println!("[OK]");
             panic!("{:?}", e);
         }
-   }
+    }
 }
 
 pub fn write_result_bool<T: Fn() -> bool>(msg: &str, func: T) -> bool {

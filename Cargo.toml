@@ -39,11 +39,14 @@ path = "./fallout_vga_buffer/"
 [dependencies.memory]
 path = "./fallout_memory/"
 
-[dependencies.fallout_qemu]
-path = "./lib/qemu/"
+[dependencies.executor]
+path = "./fallout_executor/"
 
 [dependencies.interrupt]
 path = "./fallout_interrupt/"
+
+[dependencies.fallout_qemu]
+path = "./lib/qemu/"
 
 [dependencies.fallout_testing_framework]
 path = "./lib/test_framework/"
