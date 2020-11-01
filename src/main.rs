@@ -13,6 +13,8 @@ mod panic;
 #[cfg(test)]
 mod tests;
 
+use vga_buffer::unwrap_with_msg;
+
 static HELLO: &str = "Hello World!";
 
 bootloader::entry_point!(kernel_main);
@@ -23,8 +25,7 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
     let mut mapper = unsafe { memory::init(physical_mem_off) };
     let mut frame_allocator =
         unsafe { memory::BootInfoFrameAllocator::init(&boot_info.memory_map) };
-    memory::allocator::init_heap(&mut mapper, &mut frame_allocator)
-        .expect("heap initialization failed");
+    unwrap_with_msg("Initializing the heap", memory::allocator::init_heap(&mut mapper, &mut frame_allocator));
     println!("End of initialization !");
 
     #[cfg(test)]
