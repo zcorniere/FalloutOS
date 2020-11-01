@@ -96,6 +96,12 @@ impl Writer {
             }
         }
     }
+    pub fn clear(&mut self) {
+        for row in 0..BUFFER_HEIGHT {
+            self.clear_row(row);
+        }
+    }
+
     fn new_line(&mut self) {
         for row in 1..BUFFER_HEIGHT {
             for col in 0..BUFFER_WIDTH {
@@ -106,6 +112,7 @@ impl Writer {
         self.clear_row(BUFFER_HEIGHT - 1);
         self.col_pos = 0;
     }
+
     fn clear_row(&mut self, row: usize) {
         let blank = ScreenChar {
             ascii_char: b' ',
@@ -134,10 +141,12 @@ impl Default for Writer {
     }
 }
 
-pub fn write_with_status<T: Fn() -> bool>(msg: &str, func: T) {
+pub fn write_with_status<T: Fn() -> bool>(msg: &str, func: T) -> bool {
     print!("{}...", msg);
-    match func() {
+    let rst = func();
+    match rst {
         true => println!("[OK]"),
         false => println!("[KO]"),
     }
+    rst
 }
