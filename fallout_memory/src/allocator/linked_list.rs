@@ -53,7 +53,7 @@ impl LinkedListAllocator {
     }
 
     /// Looks for free memory block, and try to merge them into one single block.
-    fn merge_region(&mut self) { todo!() }
+    fn merge_region(&mut self) {}
 
     /// Looks for a free region with the given size and alignment and removes
     /// it from the list.
@@ -74,6 +74,7 @@ impl LinkedListAllocator {
         }
         None
     }
+
     /// Try to use the given region for an allocation with given size and
     /// alignment.
     ///
