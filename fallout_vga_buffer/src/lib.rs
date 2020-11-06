@@ -1,4 +1,6 @@
 #![no_std]
+#![feature(llvm_asm)]
+
 use spin::Mutex;
 
 lazy_static::lazy_static! {
@@ -65,9 +67,9 @@ pub struct Buffer {
 pub const VGA_BUFFER: *mut u8 = 0xb8000 as *mut u8;
 
 pub struct Writer {
-    pub col_pos: usize,
-    pub color_code: ColorCode,
-    pub buffer: &'static mut Buffer,
+    col_pos: usize,
+    color_code: ColorCode,
+    buffer: &'static mut Buffer,
 }
 
 impl Writer {
@@ -85,6 +87,7 @@ impl Writer {
                     color_code: self.color_code,
                 });
                 self.col_pos += 1;
+                unsafe { update_cursor(row, col) } //new
             }
         }
     }
@@ -163,4 +166,29 @@ pub fn write_result_bool<T: Fn() -> bool>(msg: &str, func: T) -> bool {
         false => println!("[KO]"),
     }
     rst
+}
+
+#[inline]
+pub unsafe fn update_cursor(x: usize, y: usize) {
+    let pos: u16 = x as u16 * BUFFER_WIDTH as u16 + y as u16;
+        llvm_asm!("outb %al,%dx"
+            :
+            :"{dx}"(0x3D4),"{al}"(0x0F)
+            :
+        );
+        llvm_asm!("outb %al,%dx"
+            :
+            :"{dx}"(0x3D5),"{al}"(pos & 0xFF)
+            :
+        );
+        llvm_asm!("outb %al,%dx"
+            :
+            :"{dx}"(0x3D4),"{al}"(0x0E)
+            :
+        );
+        llvm_asm!("outb %al,%dx"
+            :
+            :"{dx}"(0x3D5),"{al}"( (pos>>8) & 0xFF)
+            :
+        );
 }
