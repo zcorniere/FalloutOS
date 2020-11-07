@@ -3,8 +3,8 @@ use core::task::Waker;
 use core::task::{Context, Poll};
 use crossbeam_queue::ArrayQueue;
 
-use crate::TaskId;
 use crate::task::Task;
+use crate::TaskId;
 
 pub struct Executor {
     tasks: BTreeMap<TaskId, Task>,
@@ -74,6 +74,12 @@ impl Executor {
     }
 }
 
+impl Default for Executor {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 use alloc::task::Wake;
 
 struct TaskWaker {
@@ -82,6 +88,7 @@ struct TaskWaker {
 }
 
 impl TaskWaker {
+    #[allow(clippy::new_ret_no_self)]
     fn new(task_id: TaskId, task_queue: Arc<ArrayQueue<TaskId>>) -> Waker {
         Waker::from(Arc::new(TaskWaker {
             task_id,

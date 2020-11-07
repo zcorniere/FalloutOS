@@ -9,7 +9,7 @@ static WAKER: AtomicWaker = AtomicWaker::new();
 /// ***WARNING*** should not be called by anything other that the keyboard interrupt handler.
 pub fn add_scanncode(scancode: u8) {
     if let Ok(queue) = SCANCODE_QUEUE.try_get() {
-        if let Err(_) = queue.push(scancode) {
+        if queue.push(scancode).is_err() {
             println!("WARNING: scancode queue full; dropping keyboard input");
         } else {
             WAKER.wake();
@@ -27,6 +27,12 @@ impl ScancodeStream {
             .try_init_once(|| ArrayQueue::new(100))
             .expect("ScanCodeQueue already init");
         ScancodeStream
+    }
+}
+
+impl Default for ScancodeStream {
+    fn default() -> Self {
+        Self::new()
     }
 }
 

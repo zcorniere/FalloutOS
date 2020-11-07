@@ -3,10 +3,10 @@
 
 extern crate alloc;
 
+mod executor;
 pub mod keyboard;
 pub mod simple_executor;
 pub mod task;
-mod executor;
 pub use self::executor::Executor;
 pub use self::task::Task;
 
@@ -21,4 +21,3 @@ impl TaskId {
         TaskId(NEXT_ID.fetch_add(1, Ordering::Relaxed))
     }
 }
-

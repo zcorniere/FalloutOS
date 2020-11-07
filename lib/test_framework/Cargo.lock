@@ -81,6 +81,7 @@ dependencies = [
  "futures-util",
  "pc-keyboard",
  "vga_buffer",
+ "x86_64",
 ]
 
 [[package]]
