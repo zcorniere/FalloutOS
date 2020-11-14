@@ -17,6 +17,7 @@ cache: &global_cache
 before_script:
   - rustup component add rust-src
   - rustup component add llvm-tools-preview
+  - apt-get update && apt-get install qemu && apt-get clean
 
 build:build:
   stage: build
