@@ -69,7 +69,7 @@ pub const VGA_BUFFER: *mut u8 = 0xb8000 as *mut u8;
 pub struct Writer {
     col_pos: usize,
     color_code: ColorCode,
-    buffer: &'static mut Buffer,
+    pub buffer: &'static mut Buffer,
 }
 
 impl Writer {
