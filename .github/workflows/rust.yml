@@ -16,6 +16,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: install rust component
+      run: rustup component add rust-src && rustup install llvm-tools-preview
+    - name: install qemu
+      run: apt-get update && apt-get install qemu && apt-get clean
     - name: Build
       run: cargo build --verbose
     - name: Run tests
