@@ -152,7 +152,7 @@ pub fn unwrap_with_msg<R, E: core::fmt::Debug>(msg: &str, val: Result<R, E>) -> 
             o
         }
         Err(e) => {
-            println!("[OK]");
+            println!("[KO]");
             panic!("{:?}", e);
         }
     }
