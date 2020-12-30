@@ -24,6 +24,12 @@ test-timeout = 60
 [dependencies]
 x86_64 = "0.12"
 volatile = "0.2.6"
+pc-keyboard = "0.5.0"
+
+[dependencies.futures-util]
+version = "0.3.4"
+default-features = false
+features = ["alloc"]
 
 [dependencies.bootloader]
 version = "0.9.8"

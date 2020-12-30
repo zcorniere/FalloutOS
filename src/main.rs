@@ -5,15 +5,17 @@
 #![no_main]
 
 use bootloader::BootInfo;
-use vga_buffer::println;
+use vga_buffer::{print, println};
 use x86_64::VirtAddr;
 
 mod panic;
+mod tasks;
+
+use crate::tasks::print_keypresses;
 
 #[cfg(test)]
 mod tests;
 
-use executor::keyboard::print_keypresses;
 use executor::task::Task;
 use executor::Executor;
 use vga_buffer::unwrap_with_msg;
@@ -34,6 +36,7 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
     println!("{}", HELLO);
     init(boot_info);
     println!("End of initialization !");
+    println!();
 
     #[cfg(test)]
     test_main();
@@ -46,11 +49,19 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
 
 fn init(boot_info: &'static BootInfo) {
     println!();
+    println!("Setting up CPU interrupts...");
     interrupt::init();
+    println!("Done !");
+    println!();
+
+    print!("Initializing memory...");
     let physical_mem_off = VirtAddr::new(boot_info.physical_memory_offset);
     let mut mapper = unsafe { memory::init(physical_mem_off) };
+    println!("[OK]");
+    print!("Initializing memory allocator...");
     let mut frame_allocator =
         unsafe { memory::BootInfoFrameAllocator::init(&boot_info.memory_map) };
+    println!("[OK]");
     unwrap_with_msg(
         "Initializing the heap",
         memory::allocator::init_heap(&mut mapper, &mut frame_allocator),

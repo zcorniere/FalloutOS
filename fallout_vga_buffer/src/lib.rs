@@ -103,6 +103,8 @@ impl Writer {
         for row in 0..BUFFER_HEIGHT {
             self.clear_row(row);
         }
+        self.col_pos = 0;
+        unsafe { update_cursor(BUFFER_HEIGHT-1, 0); }
     }
 
     fn new_line(&mut self) {
