@@ -22,17 +22,16 @@ test-timeout = 60
 #panic = "abort"
 
 [dependencies]
-x86_64 = "0.12"
-volatile = "0.2.6"
-pc-keyboard = "0.5.0"
+x86_64 = "0.13.1"
+pc-keyboard = "0.5.1"
 
 [dependencies.futures-util]
-version = "0.3.4"
+version = "0.3.8"
 default-features = false
 features = ["alloc"]
 
 [dependencies.bootloader]
-version = "0.9.8"
+version = "0.9.11"
 features = ["map_physical_memory"]
 
 [dependencies.lazy_static]
