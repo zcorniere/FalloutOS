@@ -1,7 +1,7 @@
 use conquer_once::spin::OnceCell;
 use crossbeam_queue::ArrayQueue;
 use futures_util::task::AtomicWaker;
-use vga_buffer::{println};
+use vga_buffer::println;
 
 pub static SCANCODE_QUEUE: OnceCell<ArrayQueue<u8>> = OnceCell::uninit();
 static WAKER: AtomicWaker = AtomicWaker::new();
@@ -60,4 +60,3 @@ impl Stream for ScancodeStream {
         }
     }
 }
-
