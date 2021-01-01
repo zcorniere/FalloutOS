@@ -6,20 +6,13 @@ edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-[package.metadata.bootimage]
-test-args = [
-    "-device", "isa-debug-exit,iobase=0xf4,iosize=0x04",
-    "-serial", "stdio",
-    "-display", "none"
+[workspace]
+members = [
+    "fallout_executor",
+    "fallout_interrupt",
+    "fallout_memory",
+    "fallout_vga_buffer",
 ]
-test-success-exit-code = 33
-test-timeout = 60
-
-[profile.dev]
-#panic = "abort"
-
-[profile.release]
-#panic = "abort"
 
 [dependencies]
 x86_64 = "0.13.1"
@@ -55,6 +48,21 @@ path = "./lib/qemu/"
 
 [dependencies.fallout_testing_framework]
 path = "./lib/test_framework/"
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+
+[package.metadata.bootimage]
+test-args = [
+    "-device", "isa-debug-exit,iobase=0xf4,iosize=0x04",
+    "-serial", "stdio",
+    "-display", "none"
+]
+test-success-exit-code = 33
+test-timeout = 60
 
 [[test]]
 name = "should_panic"
