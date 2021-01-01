@@ -4,8 +4,10 @@
 #![no_std]
 #![no_main]
 
+#[macro_use]
+extern crate vga_buffer;
+
 use bootloader::BootInfo;
-use vga_buffer::{print, println};
 use x86_64::VirtAddr;
 
 mod panic;

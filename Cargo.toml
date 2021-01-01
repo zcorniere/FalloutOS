@@ -17,6 +17,8 @@ members = [
 [dependencies]
 x86_64 = "0.13.1"
 pc-keyboard = "0.5.1"
+toogle = "0.1.1"
+volatile = "0.2"
 
 [dependencies.futures-util]
 version = "0.3.8"
@@ -50,10 +52,10 @@ path = "./lib/qemu/"
 path = "./lib/test_framework/"
 
 [profile.dev]
-panic = "abort"
+#panic = "abort"
 
 [profile.release]
-panic = "abort"
+#panic = "abort"
 
 [package.metadata.bootimage]
 test-args = [

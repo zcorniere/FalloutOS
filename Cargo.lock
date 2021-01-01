@@ -95,7 +95,9 @@ dependencies = [
  "lazy_static",
  "memory",
  "pc-keyboard",
+ "toogle",
  "vga_buffer",
+ "volatile",
  "x86_64 0.13.1",
 ]
 
@@ -255,6 +257,12 @@ dependencies = [
  "quote",
  "unicode-xid",
 ]
+
+[[package]]
+name = "toogle"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1101d75c43105c94496f4c412b6cb0d78f0ca7cdbce24a442dafe9afdf93773f"
 
 [[package]]
 name = "uart_16550"
