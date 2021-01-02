@@ -7,8 +7,7 @@
 
 use core::panic::PanicInfo;
 use fallout_qemu::{exit_qemu, serial_print, serial_println, QemuExitCode};
-use x86_64::structures::idt::InterruptDescriptorTable;
-use x86_64::structures::idt::InterruptStackFrame;
+use x86_64::structures::idt::{InterruptDescriptorTable, InterruptStackFrame};
 
 lazy_static::lazy_static! {
     static ref TEST_IDT: InterruptDescriptorTable = {

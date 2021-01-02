@@ -1,3 +1,4 @@
+#![allow(dead_code)]
 use super::task::Task;
 use alloc::collections::VecDeque;
 use core::task::{Context, Poll};

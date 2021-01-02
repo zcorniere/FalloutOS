@@ -2,8 +2,7 @@ mod executor;
 pub mod keyboard;
 pub mod simple_executor;
 pub mod task;
-pub use self::executor::Executor;
-pub use self::task::Task;
+pub use self::{executor::Executor, task::Task};
 
 use core::sync::atomic::{AtomicU64, Ordering};
 

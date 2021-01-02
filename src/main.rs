@@ -3,7 +3,6 @@
 #![feature(alloc_error_handler)]
 #![feature(const_mut_refs)]
 #![feature(wake_trait)]
-
 #![test_runner(fallout_testing_framework::test_runner)]
 #![reexport_test_harness_main = "test_main"]
 #![no_std]
@@ -23,14 +22,12 @@ mod executor;
 mod interrupt;
 mod memory;
 
-use crate::tasks::print_keypresses;
-use crate::vga::{unwrap_with_msg, write_result_bool};
+use crate::{tasks::print_keypresses, vga::unwrap_with_msg};
 
 #[cfg(test)]
 mod tests;
 
-use executor::task::Task;
-use executor::Executor;
+use executor::{task::Task, Executor};
 
 static HELLO: &str = "Hello World!";
 

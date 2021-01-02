@@ -1,7 +1,10 @@
 use super::TaskId;
 use alloc::boxed::Box;
-use core::task::{Context, Poll};
-use core::{future::Future, pin::Pin};
+use core::{
+    future::Future,
+    pin::Pin,
+    task::{Context, Poll},
+};
 
 pub struct Task {
     future: Pin<Box<dyn Future<Output = ()>>>,

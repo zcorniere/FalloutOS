@@ -1,9 +1,8 @@
-use bootloader::bootinfo::MemoryMap;
-use bootloader::bootinfo::MemoryRegionType;
-use x86_64::structures::paging::FrameAllocator;
-use x86_64::structures::paging::PhysFrame;
-use x86_64::structures::paging::Size4KiB;
-use x86_64::PhysAddr;
+use bootloader::bootinfo::{MemoryMap, MemoryRegionType};
+use x86_64::{
+    structures::paging::{FrameAllocator, PhysFrame, Size4KiB},
+    PhysAddr,
+};
 
 /// A FrameAllocator that returns usable frames from the bootloader's memory map.
 pub struct BootInfoFrameAllocator {

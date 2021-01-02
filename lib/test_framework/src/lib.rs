@@ -19,8 +19,7 @@ where
     }
 }
 
-use fallout_qemu::{exit_qemu, QemuExitCode};
-use fallout_qemu::{serial_print, serial_println};
+use fallout_qemu::{exit_qemu, serial_print, serial_println, QemuExitCode};
 
 pub fn test_runner(tests: &[&dyn Testable]) {
     serial_println!("Running {} tests", tests.len());

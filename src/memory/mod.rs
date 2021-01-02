@@ -4,8 +4,8 @@ mod locked;
 mod frame_allocator;
 pub use self::frame_allocator::BootInfoFrameAllocator;
 
-use x86_64::registers::control::Cr3;
 use x86_64::{
+    registers::control::Cr3,
     structures::paging::{OffsetPageTable, PageTable},
     VirtAddr,
 };
