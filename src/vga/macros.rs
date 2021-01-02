@@ -9,7 +9,7 @@ macro_rules! println {
     ($($arg:tt)*) => ($crate::print!("{}\n", format_args!($($arg)*)));
 }
 
-use crate::vga::WRITER;
+use crate::WRITER;
 
 #[doc(hidden)]
 pub fn _print(args: core::fmt::Arguments) {

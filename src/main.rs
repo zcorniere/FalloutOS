@@ -22,7 +22,11 @@ mod executor;
 mod interrupt;
 mod memory;
 
+use crate::memory::{allocator::LinkedListAllocator, locked::Locked};
+
 use crate::{tasks::print_keypresses, vga::unwrap_with_msg};
+use spin::Mutex;
+use vga_buffer_rs::{vga_buffer::VgaBuffer};
 
 #[cfg(test)]
 mod tests;
@@ -31,14 +35,12 @@ use executor::{task::Task, Executor};
 
 static HELLO: &str = "Hello World!";
 
-async fn async_number() -> u32 {
-    42
+lazy_static::lazy_static! {
+    pub static ref WRITER: Mutex<VgaBuffer> = Mutex::new(VgaBuffer::new(false));
 }
 
-async fn async_task() {
-    let nb = async_number().await;
-    println!("async nummber: {}", nb);
-}
+#[global_allocator]
+static ALLOCATOR: Locked<LinkedListAllocator> = Locked::new(LinkedListAllocator::new());
 
 bootloader::entry_point!(kernel_main);
 fn kernel_main(boot_info: &'static BootInfo) -> ! {
@@ -51,7 +53,6 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
     test_main();
 
     let mut executor = Executor::new();
-    executor.spawn(Task::new(async_task()));
     executor.spawn(Task::new(print_keypresses()));
     executor.run();
 }

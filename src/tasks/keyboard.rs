@@ -3,7 +3,7 @@ use pc_keyboard::{layouts, DecodedKey, HandleControl, KeyCode, Keyboard, Scancod
 use toogle::Toggle;
 use vga_buffer_rs::BasicBufferManipulation;
 
-use crate::{executor::keyboard::ScancodeStream, vga::WRITER};
+use crate::{executor::keyboard::ScancodeStream, WRITER};
 
 pub async fn print_keypresses() {
     let mut ctrl_pressed = false;

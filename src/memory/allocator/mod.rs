@@ -6,16 +6,13 @@ use x86_64::{
     VirtAddr,
 };
 
-use crate::memory::locked::Locked;
+use crate::ALLOCATOR;
 
 //mod bump;
 //use bump::BumpAllocator;
 
 mod linked_list;
-use linked_list::LinkedListAllocator;
-
-#[global_allocator]
-static ALLOCATOR: Locked<LinkedListAllocator> = Locked::new(LinkedListAllocator::new());
+pub use linked_list::LinkedListAllocator;
 
 pub const HEAP_START: usize = 0x_4444_4444_0000;
 pub const HEAP_SIZE: usize = 100 * 1024;

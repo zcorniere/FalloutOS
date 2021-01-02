@@ -1,5 +1,5 @@
 pub mod allocator;
-mod locked;
+pub mod locked;
 
 mod frame_allocator;
 pub use self::frame_allocator::BootInfoFrameAllocator;

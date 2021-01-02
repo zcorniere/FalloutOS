@@ -1,10 +1,3 @@
-use spin::Mutex;
-use vga_buffer_rs::vga_buffer::VgaBuffer;
-
-lazy_static::lazy_static! {
-    pub static ref WRITER: Mutex<VgaBuffer> = Mutex::new(VgaBuffer::new(false));
-}
-
 #[macro_use]
 pub mod macros;
 
