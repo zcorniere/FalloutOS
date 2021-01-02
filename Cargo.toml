@@ -11,7 +11,6 @@ members = [
     "fallout_executor",
     "fallout_interrupt",
     "fallout_memory",
-    "fallout_vga_buffer",
 ]
 
 [dependencies]
@@ -19,6 +18,8 @@ x86_64 = "0.13.1"
 pc-keyboard = "0.5.1"
 toogle = "0.1.1"
 volatile = "0.2"
+vga_buffer_rs = "0.1"
+spin = "0.7"
 
 [dependencies.futures-util]
 version = "0.3.8"
@@ -32,9 +33,6 @@ features = ["map_physical_memory"]
 [dependencies.lazy_static]
 version = "1"
 features = ["spin_no_std"]
-
-[dependencies.vga_buffer]
-path = "./fallout_vga_buffer/"
 
 [dependencies.memory]
 path = "./fallout_memory/"

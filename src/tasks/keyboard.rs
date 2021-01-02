@@ -1,9 +1,11 @@
 use executor::keyboard::ScancodeStream;
 use toogle::Toggle;
-use vga_buffer::WRITER;
 
 use futures_util::stream::StreamExt;
 use pc_keyboard::{layouts, DecodedKey, HandleControl, KeyCode, Keyboard, ScancodeSet1};
+
+use crate::vga::WRITER;
+use vga_buffer_rs::BasicBufferManipulation;
 
 pub async fn print_keypresses() {
     let mut ctrl_pressed = false;

@@ -78,7 +78,6 @@ dependencies = [
  "conquer-once",
  "crossbeam-queue",
  "futures-util",
- "vga_buffer",
  "x86_64 0.13.1",
 ]
 
@@ -95,8 +94,9 @@ dependencies = [
  "lazy_static",
  "memory",
  "pc-keyboard",
+ "spin 0.7.0",
  "toogle",
- "vga_buffer",
+ "vga_buffer_rs",
  "volatile",
  "x86_64 0.13.1",
 ]
@@ -118,7 +118,6 @@ dependencies = [
  "bootloader",
  "fallout_qemu",
  "interrupt",
- "vga_buffer",
 ]
 
 [[package]]
@@ -153,7 +152,6 @@ dependencies = [
  "lazy_static",
  "pic8259_simple",
  "spin 0.7.0",
- "vga_buffer",
  "x86_64 0.13.1",
 ]
 
@@ -172,7 +170,6 @@ version = "0.0.1"
 dependencies = [
  "bootloader",
  "spin 0.7.0",
- "vga_buffer",
  "x86_64 0.13.1",
 ]
 
@@ -281,13 +278,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f7fe0bb3479651439c9112f72b6c505038574c9fbb575ed1bf3b797fa39dd564"
 
 [[package]]
-name = "vga_buffer"
-version = "0.0.1"
+name = "vga_buffer_rs"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "333f69979c7f5ae098863c5b29d1bd8c79a05a72bb31d296803942a589260cc2"
 dependencies = [
- "lazy_static",
- "spin 0.7.0",
  "volatile",
- "x86_64 0.13.1",
 ]
 
 [[package]]

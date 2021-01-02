@@ -4,23 +4,22 @@
 #![no_std]
 #![no_main]
 
-#[macro_use]
-extern crate vga_buffer;
-
 use bootloader::BootInfo;
 use x86_64::VirtAddr;
 
+#[macro_use]
+mod vga;
 mod panic;
 mod tasks;
 
 use crate::tasks::print_keypresses;
+use crate::vga::{unwrap_with_msg, write_result_bool};
 
 #[cfg(test)]
 mod tests;
 
 use executor::task::Task;
 use executor::Executor;
-use vga_buffer::unwrap_with_msg;
 
 static HELLO: &str = "Hello World!";
 

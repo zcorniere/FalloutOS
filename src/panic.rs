@@ -1,6 +1,3 @@
-#[cfg(not(test))]
-use vga_buffer::println;
-
 use core::panic::PanicInfo;
 
 #[cfg(not(test))]
