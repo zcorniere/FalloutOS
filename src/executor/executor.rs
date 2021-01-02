@@ -3,8 +3,8 @@ use core::task::Waker;
 use core::task::{Context, Poll};
 use crossbeam_queue::ArrayQueue;
 
-use crate::task::Task;
-use crate::TaskId;
+use crate::executor::task::Task;
+use crate::executor::TaskId;
 
 pub struct Executor {
     tasks: BTreeMap<TaskId, Task>,

@@ -1,7 +1,4 @@
-#![feature(abi_x86_interrupt)]
-#![no_std]
-
-use vga_buffer::write_result_bool;
+use crate::vga::write_result_bool;
 
 pub mod gdt;
 mod handlers;

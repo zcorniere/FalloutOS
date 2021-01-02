@@ -1,4 +1,3 @@
-use vga_buffer::{print, println};
 use x86_64::structures::idt::InterruptStackFrame;
 use x86_64::structures::idt::PageFaultErrorCode;
 
@@ -23,13 +22,13 @@ pub extern "x86-interrupt" fn page_fault_handler(
     println!("Accessed Address: {:?}", Cr2::read());
     println!("Error Code: {:?}", error_code);
     println!("{:#?}", stack_frame);
-    crate::hlt_loop();
+    crate::interrupt::hlt_loop();
 }
 
 pub extern "x86-interrupt" fn timer_interrupt_handler(_stack_frame: &mut InterruptStackFrame) {
     print!(".");
     unsafe {
-        use crate::hardware::{InterruptIndex, PICS};
+        use crate::interrupt::hardware::{InterruptIndex, PICS};
         PICS.lock()
             .notify_end_of_interrupt(InterruptIndex::Timer.as_u8());
     }
@@ -40,10 +39,10 @@ pub extern "x86-interrupt" fn keyboard_interrupt_handler(_stack_frame: &mut Inte
 
     let mut port = Port::new(0x60);
     let scancode: u8 = unsafe { port.read() };
-    executor::keyboard::add_scanncode(scancode);
+    crate::executor::keyboard::add_scanncode(scancode);
 
     unsafe {
-        use crate::hardware::{InterruptIndex, PICS};
+        use crate::interrupt::hardware::{InterruptIndex, PICS};
         PICS.lock()
             .notify_end_of_interrupt(InterruptIndex::Timer.as_u8());
     }

@@ -1,11 +1,3 @@
-#![no_std]
-#![feature(wake_trait)]
-
-#[macro_use]
-extern crate vga_buffer;
-
-extern crate alloc;
-
 mod executor;
 pub mod keyboard;
 pub mod simple_executor;

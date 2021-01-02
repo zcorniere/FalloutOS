@@ -72,28 +72,18 @@ dependencies = [
 ]
 
 [[package]]
-name = "executor"
-version = "0.1.0"
-dependencies = [
- "conquer-once",
- "crossbeam-queue",
- "futures-util",
- "x86_64 0.13.1",
-]
-
-[[package]]
 name = "fallout_os"
 version = "0.0.1"
 dependencies = [
  "bootloader",
- "executor",
+ "conquer-once",
+ "crossbeam-queue",
  "fallout_qemu",
  "fallout_testing_framework",
  "futures-util",
- "interrupt",
  "lazy_static",
- "memory",
  "pc-keyboard",
+ "pic8259_simple",
  "spin 0.7.0",
  "toogle",
  "vga_buffer_rs",
@@ -117,7 +107,6 @@ version = "0.0.1"
 dependencies = [
  "bootloader",
  "fallout_qemu",
- "interrupt",
 ]
 
 [[package]]
@@ -145,32 +134,12 @@ dependencies = [
 ]
 
 [[package]]
-name = "interrupt"
-version = "0.0.1"
-dependencies = [
- "executor",
- "lazy_static",
- "pic8259_simple",
- "spin 0.7.0",
- "x86_64 0.13.1",
-]
-
-[[package]]
 name = "lazy_static"
 version = "1.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
 dependencies = [
  "spin 0.5.2",
-]
-
-[[package]]
-name = "memory"
-version = "0.0.1"
-dependencies = [
- "bootloader",
- "spin 0.7.0",
- "x86_64 0.13.1",
 ]
 
 [[package]]

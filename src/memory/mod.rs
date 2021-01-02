@@ -1,9 +1,3 @@
-#![no_std]
-#![feature(alloc_error_handler)]
-#![feature(const_mut_refs)]
-
-extern crate alloc;
-
 pub mod allocator;
 mod locked;
 

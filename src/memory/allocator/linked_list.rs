@@ -1,4 +1,4 @@
-use crate::allocator::align_up;
+use crate::memory::allocator::align_up;
 
 struct ListNode {
     size: usize,
@@ -108,7 +108,7 @@ impl LinkedListAllocator {
     }
 }
 
-use crate::locked::Locked;
+use crate::memory::locked::Locked;
 use alloc::alloc::{GlobalAlloc, Layout};
 
 unsafe impl GlobalAlloc for Locked<LinkedListAllocator> {

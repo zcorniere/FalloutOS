@@ -1,8 +1,15 @@
 #![feature(custom_test_frameworks)]
+#![feature(abi_x86_interrupt)]
+#![feature(alloc_error_handler)]
+#![feature(const_mut_refs)]
+#![feature(wake_trait)]
+
 #![test_runner(fallout_testing_framework::test_runner)]
 #![reexport_test_harness_main = "test_main"]
 #![no_std]
 #![no_main]
+
+extern crate alloc;
 
 use bootloader::BootInfo;
 use x86_64::VirtAddr;
@@ -11,6 +18,10 @@ use x86_64::VirtAddr;
 mod vga;
 mod panic;
 mod tasks;
+
+mod executor;
+mod interrupt;
+mod memory;
 
 use crate::tasks::print_keypresses;
 use crate::vga::{unwrap_with_msg, write_result_bool};

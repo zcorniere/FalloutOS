@@ -1,6 +1,6 @@
 use x86_64::structures::idt::InterruptDescriptorTable;
 
-use crate::{gdt, handlers, hardware};
+use crate::interrupt::{gdt, handlers, hardware};
 
 lazy_static::lazy_static! {
     static ref IDT: InterruptDescriptorTable = {

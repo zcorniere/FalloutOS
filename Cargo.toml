@@ -6,42 +6,36 @@ edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-[workspace]
-members = [
-    "fallout_executor",
-    "fallout_interrupt",
-    "fallout_memory",
-]
-
 [dependencies]
-x86_64 = "0.13.1"
-pc-keyboard = "0.5.1"
-toogle = "0.1.1"
+x86_64 = "0.13"
+pc-keyboard = "0.5"
+toogle = "0.1"
 volatile = "0.2"
 vga_buffer_rs = "0.1"
+pic8259_simple = "0.2"
 spin = "0.7"
 
 [dependencies.futures-util]
-version = "0.3.8"
+version = "0.3"
 default-features = false
 features = ["alloc"]
 
 [dependencies.bootloader]
-version = "0.9.11"
+version = "0.9"
 features = ["map_physical_memory"]
 
 [dependencies.lazy_static]
 version = "1"
 features = ["spin_no_std"]
 
-[dependencies.memory]
-path = "./fallout_memory/"
+[dependencies.crossbeam-queue]
+version = "0.3"
+default-features = false
+features = ["alloc"]
 
-[dependencies.executor]
-path = "./fallout_executor/"
-
-[dependencies.interrupt]
-path = "./fallout_interrupt/"
+[dependencies.conquer-once]
+version = "0.3"
+default-features = false
 
 [dependencies.fallout_qemu]
 path = "./lib/qemu/"

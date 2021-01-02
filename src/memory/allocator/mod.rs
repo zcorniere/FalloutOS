@@ -6,7 +6,7 @@ use x86_64::{
     VirtAddr,
 };
 
-use crate::locked::Locked;
+use crate::memory::locked::Locked;
 
 //mod bump;
 //use bump::BumpAllocator;
