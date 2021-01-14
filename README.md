@@ -1,26 +1,30 @@
 # FalloutOS
 
 ## Purpose
-The goal of the project is to reproduce the interface offered by various terminal in the Fallout games.
 
-And for me to pratice the related technologies, like low-level memory management, cpu scheduling, asm, etc...
+I didn't have any goal at the begining of this projet, I just wanted to practice my Rust. Had to learn new things. Learn how a kernel work, to discovery how the memory is handelled on bare metal, how segfault are detected... But I did gave myself some target.
 
-## Dependencies
-This is written in Rust, so you obviously need to have [rust](https://rustup.rs/).
+- The code must be in Rust, and avoid assembly or unsafe Rust as much a possible.
+- The end product should look like a terminal juste like the one in the video game series "Fallout"
+
+![](./assets/terminal.png)
+
+## HowTo
+This is written in Rust, so you obviously need to have [rust](https://rustup.rs/) installed.
 
 In order to run this, you need to have installed `qemu`  and `bootimage`.
 
-## Ubuntu
+### Ubuntu
 ```bash
 # apt-get install qemu -y
 ```
 
-## Fedora
+### Fedora
 ```bash
 # dnf install qemu -y
 ```
 
-### Rust component
+### extra Rust setup
 ```bash
 rustup toolchain install nightly
 rustup component add rust-src
@@ -29,3 +33,5 @@ cargo install bootimage
 ```
 
 Now you can hit `cargo run`
+
+If a problem occurs, feel free to open an issue. Or to make a PR.
