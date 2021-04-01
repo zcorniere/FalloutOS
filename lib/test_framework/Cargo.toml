@@ -9,7 +9,7 @@ edition = "2018"
 [dependencies]
 
 [dependencies.bootloader]
-version = "0.9"
+version = "0.9.16"
 features = ["map_physical_memory"]
 
 [dependencies.fallout_qemu]
