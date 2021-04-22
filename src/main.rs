@@ -2,6 +2,7 @@
 #![feature(abi_x86_interrupt)]
 #![feature(alloc_error_handler)]
 #![feature(const_mut_refs)]
+#![feature(asm)]
 #![test_runner(fallout_testing_framework::test_runner)]
 #![reexport_test_harness_main = "test_main"]
 #![no_std]
@@ -36,6 +37,7 @@ static HELLO: &str = "Hello World!";
 
 lazy_static::lazy_static! {
     pub static ref WRITER: Mutex<VgaBuffer> = Mutex::new(VgaBuffer::new(false));
+    pub static ref TIME_COUNTER: Mutex<u64> = Mutex::new(0);
 }
 
 #[global_allocator]

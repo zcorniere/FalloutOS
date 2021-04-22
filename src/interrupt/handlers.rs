@@ -1,3 +1,4 @@
+use crate::TIME_COUNTER;
 use x86_64::structures::idt::{InterruptStackFrame, PageFaultErrorCode};
 
 pub extern "x86-interrupt" fn breakpoint_handler(stack_frame: &mut InterruptStackFrame) {
@@ -25,7 +26,9 @@ pub extern "x86-interrupt" fn page_fault_handler(
 }
 
 pub extern "x86-interrupt" fn timer_interrupt_handler(_stack_frame: &mut InterruptStackFrame) {
-    print!(".");
+    x86_64::instructions::interrupts::without_interrupts(|| {
+        *(TIME_COUNTER.lock()) += 1;
+    });
     unsafe {
         use crate::interrupt::hardware::{InterruptIndex, PICS};
         PICS.lock()

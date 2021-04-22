@@ -3,7 +3,7 @@ use pc_keyboard::{layouts, DecodedKey, HandleControl, KeyCode, Keyboard, Scancod
 use toogle::Toggle;
 use vga_buffer_rs::BasicBufferManipulation;
 
-use crate::{executor::keyboard::ScancodeStream, WRITER};
+use crate::{executor::keyboard::ScancodeStream, TIME_COUNTER, WRITER};
 
 pub async fn print_keypresses() {
     let mut ctrl_pressed = false;
@@ -19,6 +19,9 @@ pub async fn print_keypresses() {
                         match key {
                             DecodedKey::RawKey(KeyCode::ControlLeft) => ctrl_pressed.toggle(),
                             DecodedKey::Unicode('c') if ctrl_pressed => WRITER.lock().clear(),
+                            DecodedKey::Unicode('n') if ctrl_pressed => {
+                                print!("{}\n", TIME_COUNTER.lock())
+                            }
                             DecodedKey::Unicode(character) => print!("{}", character),
                             DecodedKey::RawKey(key) => print!("{:?}", key),
                         }
